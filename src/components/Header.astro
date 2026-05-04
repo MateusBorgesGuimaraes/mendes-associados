@@ -1,0 +1,33 @@
+---
+interface Props {
+    variant?: "home" | "default";
+}
+
+const { variant = "default" } = Astro.props;
+
+import Logo from "./ui/Logo.astro";
+---
+
+{
+    variant === "home" ? (
+        <nav class="flex items-center justify-between px-12 py-5  bg-cream text-navy-mid">
+            <Logo />
+            <div class="flex gap-6">
+                <a href="/sobre">Sobre</a>
+                <a href="/areas">Áreas</a>
+                <a href="/blog">Blog</a>
+                <a href="/contato">Contato</a>
+            </div>
+        </nav>
+    ) : (
+        <nav class="flex items-center justify-between px-12 py-5 border-b border-border bg-cream text-navy-mid">
+            <Logo />
+            <div class="flex gap-6">
+                <a href="/sobre">Sobre</a>
+                <a href="/areas">Áreas</a>
+                <a href="/blog">Blog</a>
+                <a href="/contato">Contato</a>
+            </div>
+        </nav>
+    )
+}

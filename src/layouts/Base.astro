@@ -1,0 +1,33 @@
+---
+import Header from "../components/Header.astro";
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description?: string;
+    navVariant?: "home" | "default";
+}
+const { title, description, navVariant = "default" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro Basics</title>
+    </head>
+    <body class="bg-cream text-text-muted">
+        {navVariant !== "home" && <Header />}
+        <main>
+            <slot />
+        </main>
+    </body>
+</html>
+
+<style>
+    @import "../styles/global.css";
+</style>

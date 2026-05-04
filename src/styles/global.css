@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@import "@fontsource/playfair-display/400.css";
+@import "@fontsource/playfair-display/400-italic.css";
+@import "@fontsource/dm-sans/300.css";
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+
+@theme {
+    /* Cores */
+    --color-navy: #1a2332;
+    --color-navy-mid: #253449;
+    --color-gold: #8b6a3e;
+    --color-gold-light: #c9a97a;
+    --color-cream: #f7f4ef;
+    --color-cream-mid: #efece5;
+    --color-border: #ddd8cf;
+    --color-text-muted: #8a8479;
+    --color-text-light: #e8e2d9;
+    --color-text-subtle: #8b9bb4;
+
+    /* Fontes */
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+}
