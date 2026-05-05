@@ -23,3 +23,34 @@
     --font-serif: "Playfair Display", Georgia, serif;
     --font-sans: "DM Sans", system-ui, sans-serif;
 }
+
+@layer components {
+    .dest,
+    .dest2 {
+        font-size: var(--text-base);
+        color: var(--color-gold);
+        text-transform: uppercase;
+        letter-spacing: 10%;
+    }
+
+    .dest2 {
+        color: var(--color-text-subtle);
+    }
+
+    .title {
+        font-family: var(--font-serif);
+        font-size: 4rem;
+        color: var(--color-navy);
+        line-height: 120%;
+    }
+
+    .italicGold {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .largeP {
+        font-size: var(--text-xl);
+        color: var(--color-text-muted);
+    }
+}

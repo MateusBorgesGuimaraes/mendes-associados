@@ -1,0 +1,23 @@
+---
+interface Props {
+    variant?: "light" | "dark";
+}
+
+const { variant = "light" } = Astro.props;
+---
+
+<div class="flex flex-col w-fit">
+    <p
+        class={`text-base ${variant === "light" ? "text-navy-mid" : "text-text-subtle"}`}
+    >
+        <slot />
+    </p>
+    <div class="flex items-center w-[calc(100%+12px)]">
+        <span
+            class={`h-0.5 flex-1 -mr-2 ${variant === "light" ? "bg-navy" : "bg-navy-mid"}`}
+        ></span>
+        <span
+            class={`w-2.25 h-2.25 border-t-2 border-r-2 rotate-45 shrink-0 ${variant === "light" ? "border-navy" : "border-navy-mid"}`}
+        ></span>
+    </div>
+</div>

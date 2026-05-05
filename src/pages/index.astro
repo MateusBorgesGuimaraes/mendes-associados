@@ -1,13 +1,95 @@
 ---
 import Base from "../layouts/Base.astro";
 import Header from "../components/Header.astro";
+import ButtonLink from "../components/ui/ButtonLink.astro";
+import Indicator from "../components/ui/Indicator.astro";
+import ListArrow from "../icons/ListArrow.svg";
 ---
 
 <Base title="Inicio" navVariant="home">
     <section class="grid grid-cols-2 h-screen">
-        <div>
+        <div class="flex flex-col h-screen">
             <Header variant="home" />
+            <div class="px-12 flex flex-col flex-1 justify-center gap-6">
+                <span class="dest">Advocacia especializada — SP</span>
+                <h1 class="title">
+                    Direito com <br /><span class="italicGold">precisão</span
+                    ><br /> e propósito.
+                </h1>
+                <p class="largeP max-w-110">
+                    Assessoria jurídica estratégica para pessoas e empresas que
+                    precisam de soluções concretas, não promessas.
+                </p>
+                <ButtonLink href="#" class="max-w-57.5"
+                    >AGENDAR CONSULTA</ButtonLink
+                >
+                <Indicator>Nossas áreas</Indicator>
+            </div>
         </div>
-        <div class="bg-navy"></div>
+        <div class="bg-navy px-12 flex flex-col h-screen">
+            <div class="flex flex-col flex-1 justify-center gap-6">
+                <span class="dest2">Áreas de atuação</span>
+                <ul>
+                    <li
+                        class="border-b border-t border-navy-mid text-text-light font-serif text-xl py-4 flex justify-between items-center"
+                    >
+                        Direito Civil
+
+                        <ListArrow />
+                    </li>
+                    <li
+                        class="border-b border-t border-navy-mid text-text-light font-serif text-xl py-4 flex justify-between items-center"
+                    >
+                        Direito Trabalhista
+
+                        <ListArrow />
+                    </li>
+                    <li
+                        class="border-b border-t border-navy-mid text-text-light font-serif text-xl py-4 flex justify-between items-center"
+                    >
+                        Direito Empresarial
+
+                        <ListArrow />
+                    </li>
+                    <li
+                        class="border-b border-t border-navy-mid text-text-light font-serif text-xl py-4 flex justify-between items-center"
+                    >
+                        Direito Imobiliário
+
+                        <ListArrow />
+                    </li>
+                    <li
+                        class="border-b border-t border-navy-mid text-text-light font-serif text-xl py-4 flex justify-between items-center"
+                    >
+                        Direito de Família
+
+                        <ListArrow />
+                    </li>
+                </ul>
+            </div>
+
+            <div class="flex items-center justify-center pb-12">
+                <div
+                    class="flex flex-col items-center justify-center gap-6 px-6 border-r border-navy-mid"
+                >
+                    <p class="font-serif text-5xl text-gold-light">12+</p>
+                    <p class="text-text-subtle uppercase">ANOS DE ATUAÇÃO</p>
+                </div>
+
+                <div
+                    class="flex flex-col items-center gap-6 px-6 border-r border-navy-mid"
+                >
+                    <p class="font-serif text-5xl text-gold-light">840</p>
+                    <p class="text-text-subtle uppercase">Casos concluídos</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-6 px-6">
+                    <p class="font-serif text-5xl text-gold-light">98%</p>
+                    <p class="text-text-subtle uppercase">
+                        Clientes satisfeitos
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 </Base>
