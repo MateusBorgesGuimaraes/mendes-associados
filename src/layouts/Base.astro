@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -18,13 +19,14 @@ const { title, description, navVariant = "default" } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="generator" content={Astro.generator} />
-        <title>Astro Basics</title>
+        <title>{title}</title>
     </head>
     <body class="bg-cream text-text-muted">
         {navVariant !== "home" && <Header />}
         <main>
             <slot />
         </main>
+        <Footer />
     </body>
 </html>
 

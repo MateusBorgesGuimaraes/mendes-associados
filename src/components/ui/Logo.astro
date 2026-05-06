@@ -1,7 +1,13 @@
 ---
+interface Props {
+    variant?: "light" | "dark";
+}
 
+const { variant = "light" } = Astro.props;
 ---
 
-<div class="text-navy-mid font-serif text-2xl">
+<div
+    class={` font-serif text-2xl ${variant === "dark" ? "text-text-light" : "text-navy-mid"}`}
+>
     Mendes <span class="text-gold">&</span> Associados
 </div>

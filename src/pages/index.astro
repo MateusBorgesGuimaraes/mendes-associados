@@ -7,6 +7,7 @@ import ListArrow from "../icons/ListArrow.svg";
 ---
 
 <Base title="Inicio" navVariant="home">
+    <!-- HERO SECTION -->
     <section class="grid grid-cols-2 h-screen">
         <div class="flex flex-col h-screen">
             <Header variant="home" />
@@ -90,6 +91,63 @@ import ListArrow from "../icons/ListArrow.svg";
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+    <!-- QUALITY SECTION -->
+    <section class="border-t border-b border-border grid grid-cols-3">
+        <div class="flex flex-col gap-3 py-8 border-r border-border px-12">
+            <span class="font-serif text-2xl text-gold">01</span>
+            <h2 class="font-serif text-3xl text-navy">
+                Atendimento <span class="italic">personalizado</span>
+            </h2>
+            <p class="text-base text-text-muted">
+                Cada caso recebe atenção exclusiva. Você fala diretamente com o
+                advogado responsável, sem intermediários.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-3 py-8 border-r border-border px-12">
+            <span class="font-serif text-2xl text-gold">02</span>
+            <h2 class="font-serif text-3xl text-navy">
+                Estratégia <span class="italic">orientada</span> a resultado
+            </h2>
+            <p class="text-base text-text-muted">
+                Análise criteriosa do seu caso antes de qualquer ação. Clareza
+                sobre riscos, prazos e expectativas reais.
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-3 py-8 px-12">
+            <span class="font-serif text-2xl text-gold">03</span>
+            <h2 class="font-serif text-3xl text-navy">
+                Transparência <span class="italic">total</span>
+            </h2>
+            <p class="text-base text-text-muted">
+                Honorários claros desde a primeira conversa. Sem surpresas no
+                meio do processo.
+            </p>
+        </div>
+    </section>
+    <!-- RECENT ARTICLES SECTION -->
+    <!-- <div>fazer depois que a parte de blog estiver pronta</div> -->
+    <section class="py-12 mx-auto justify-center flex items-center gap-100">
+        <div class="flex flex-col gap-2">
+            <span class="dest">Agende uma consulta</span>
+            <h1 class="title">
+                Seu caso merece <br /> atenção <span class="italicGold"
+                    >especializada</span
+                >.
+            </h1>
+            <p class="largeP">
+                A primeira conversa é gratuita. Em 30 minutos você entende seus <br
+                /> direitos, os caminhos possíveis e o que esperar do processo.
+            </p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <ButtonLink href="#" class="max-w-57.5"
+                >CONSULTA GRATUTIRA</ButtonLink
+            >
+            <Indicator>Ou envie uma mensagem</Indicator>
         </div>
     </section>
 </Base>
