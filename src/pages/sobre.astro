@@ -1,0 +1,149 @@
+---
+import Base from "../layouts/Base.astro";
+
+const cardsInfos = [
+    {
+        id: 1,
+        sigla: "CM",
+        cor: "var(--color-navy)",
+        nome: "Dr. Carlos Mendes",
+        cargo: "Sócio fundador",
+        desc: "Advogado com 15 anos de experiência, especialista em direito civil e empresarial pela USP.",
+        tags: ["Civil", "Empresarial", "Imobiliário"],
+    },
+    {
+        id: 2,
+        sigla: "AS",
+        cor: "var(--color-gold)",
+        nome: "Dra. Ana Souza",
+        cargo: "Sócia",
+        desc: "Especialista em direito trabalhista com mais de 200 casos de recuperação de verbas rescisórias.",
+        tags: ["Trabalhista", "Família", "Imobiliário"],
+    },
+    {
+        id: 3,
+        sigla: "RF",
+        cor: "var(--color-navy-mid)",
+        nome: "Dr. Rafael Faria",
+        cargo: "Advogado associado",
+        desc: "Mestrando em direito empresarial pela FGV. Foco em contratos, M&A e compliance.",
+        tags: ["Empresarial", "Compliance"],
+    },
+    {
+        id: 4,
+        sigla: "CM",
+        cor: "var(--color-navy)",
+        nome: "Dr. Carlos Mendes",
+        cargo: "Sócio fundador",
+        desc: "Advogado com 15 anos de experiência, especialista em direito civil e empresarial pela USP.",
+        tags: ["Civil", "Empresarial", "Imobiliário"],
+    },
+];
+---
+
+<Base title="Sobre">
+    <!-- APRESENTAÇÃO DA PAGINA -->
+    <section
+        class="grid grid-cols-2 px-12 h-[calc(100vh-72px)] border-b border-border"
+    >
+        <!-- LADO ESQUERDO -->
+        <div
+            class="border-r border-border flex flex-col flex-1 justify-center gap-4"
+        >
+            <span class="dest">Quem somos </span>
+            <h1 class="title">
+                Advocacia com <br /><span class="italicGold">história</span> e<br
+                /> compromisso.
+            </h1>
+            <p class="largeP max-w-110">
+                Fundado em 2012, o escritório Mendes & Associados nasceu da
+                convicção de que o direito deve ser acessível, claro e efetivo.
+                Atuamos em São Paulo com foco em resultados concretos e relações
+                duradouras com nossos clientes.
+            </p>
+        </div>
+        <!-- LADO DIREITO -->
+        <div class="flex items-center justify-center">
+            <ul
+                class="max-w-lg flex items-center justify-center flex-col gap-16"
+            >
+                <li
+                    class="flex flex-col gap-2 py-1 pl-12 border-l-3 border-gold"
+                >
+                    <h4 class="font-serif text-navy text-2xl">
+                        Comprometimento
+                    </h4>
+                    <p class="text-text-muted text-base">
+                        Cada caso é tratado com a mesma dedicação, independente
+                        do porte ou complexidade.
+                    </p>
+                </li>
+
+                <li
+                    class="flex flex-col gap-2 py-1 pl-12 border-l-3 border-border"
+                >
+                    <h4 class="font-serif text-navy text-2xl">Clareza</h4>
+                    <p class="text-text-muted text-base">
+                        Comunicação direta e honesta sobre perspectivas, riscos
+                        e custos em todas as etapas.
+                    </p>
+                </li>
+
+                <li
+                    class="flex flex-col gap-2 py-1 pl-12 border-l-3 border-border"
+                >
+                    <h4 class="font-serif text-navy text-2xl">Ética</h4>
+                    <p class="text-text-muted text-base">
+                        Atuação pautada pelos mais altos padrões da OAB e pelo
+                        respeito irrestrito às partes.
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- EQUIPE -->
+
+    <section class="bg-cream-mid flex justify-center items-center px-12 py-12">
+        <div>
+            <h2 class="font-serif text-3xl text-navy self-start mb-8">
+                Nossa <span class="italic text-gold">equipe</span>
+            </h2>
+            <div class="flex gap-1">
+                {
+                    cardsInfos.map((card) => (
+                        <div class="bg-cream px-5 py-8 flex flex-col max-w-90">
+                            <div
+                                style={{ background: card.cor }}
+                                class={`w-20 h-20 mb-5 rounded-full flex items-center justify-center bg-navy`}
+                            >
+                                <span class="text-white font-serif text-[32px]">
+                                    {card.sigla}
+                                </span>
+                            </div>
+
+                            <div class="flex flex-col gap-1.5 mb-3">
+                                <h3 class="text-navy font-serif text-2xl">
+                                    {card.nome}
+                                </h3>
+                                <span class="uppercase text-gold text-sm">
+                                    {card.cargo}
+                                </span>
+                            </div>
+
+                            <p class="text-text-muted mb-8">{card.desc}</p>
+
+                            <div class="flex gap-3">
+                                {card.tags.map((tag) => (
+                                    <span class="py-1.5 px-4 border border-border rounded-full capitalize">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Base>

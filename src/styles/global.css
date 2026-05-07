@@ -50,7 +50,7 @@
     }
 
     .largeP {
-        font-size: var(--text-xl);
+        font-size: var(--text-lg);
         color: var(--color-text-muted);
     }
 }
