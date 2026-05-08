@@ -1,0 +1,118 @@
+---
+import Base from "../../layouts/Base.astro";
+import ButtonLink from "../../components/ui/ButtonLink.astro";
+import Indicator from "../../components/ui/Indicator.astro";
+import CardAreaAtuacao from "../../components/ui/CardAreaAtuacao.astro";
+
+const direitoTrabalhistaDados = [
+    {
+        id: "01",
+        title: "Rescisão indireta",
+        desc: "Quando o empregador descumpre obrigações legais, você pode rescindir o contrato com direito a todas as verbas.",
+    },
+
+    {
+        id: "02",
+        title: "Horas extras e banco de horas",
+        desc: "Análise do cartão de ponto e cálculo das diferenças devidas, incluindo reflexos em férias e 13º.",
+    },
+
+    {
+        id: "03",
+        title: "Assédio moral e sexual",
+        desc: "Orientação e representação em casos de ambiente de trabalho hostil, com pedido de danos morais.",
+    },
+
+    {
+        id: "04",
+        title: "FGTS e multa rescisória",
+        desc: "Levantamento e cobrança do saldo do FGTS com multa de 40% nos casos de dispensa sem justa causa.",
+    },
+
+    {
+        id: "05",
+        title: "Acordo coletivo e sindicato",
+        desc: "Análise de convenções coletivas e representação em negociações com sindicatos e empresas.",
+    },
+
+    {
+        id: "06",
+        title: "Compliance trabalhista",
+        desc: "Para empresas: auditoria e adequação às normas para evitar passivos e autuações.",
+    },
+];
+---
+
+<Base title="Areas">
+    <section
+        class="bg-navy flex justify-between items-center px-12 py-12 h-[calc(100vh-72px)]"
+    >
+        <dv>
+            <div class="flex flex-col flex-1 justify-center gap-6">
+                <div class="dest">
+                    <span class="text-text-subtle">Áreas de atuação</span>
+                    <span class="text-gold-light"> / Direito Trabalhista </span>
+                </div>
+                <h1 class="title text-text-light">
+                    Direito <br /><span class="italicGold text-gold-light"
+                        >Trabalhista</span
+                    >.
+                </h1>
+                <p class="largeP max-w-110 text-text-subtle">
+                    Defendemos seus direitos como trabalhador ou orientamos
+                    empresas a manter conformidade com a legislação. Atuamos em
+                    rescisões, horas extras, assédio, acordos coletivos e muito
+                    mais.
+                </p>
+                <ButtonLink variant="gold" href="#" class="max-w-57.5"
+                    >AGENDAR CONSULTA</ButtonLink
+                >
+                <Indicator variant="dark">Ver casos recentes</Indicator>
+            </div>
+        </dv>
+        <dv>
+            <ul class="flex flex-col gap-6">
+                <li class="px-8 py-7 flex gap-6 bg-navy-mid min-w-140">
+                    <span class="font-serif text-white text-[40px]">320+</span>
+                    <p class="text-text-subtle text-xl max-w-[20ch]">
+                        Causas trabalhistas concluídas com êxito
+                    </p>
+                </li>
+
+                <li class="px-8 py-7 flex gap-6 bg-navy-mid min-w-140">
+                    <span class="font-serif text-white text-[40px]">94%</span>
+                    <p class="text-text-subtle text-xl max-w-[20ch]">
+                        Taxa de acordo favorável ao cliente
+                    </p>
+                </li>
+
+                <li class="px-8 py-7 flex gap-6 bg-navy-mid min-w-140">
+                    <span class="font-serif text-white text-[40px]">48h</span>
+                    <p class="text-text-subtle text-xl max-w-[20ch]">
+                        Tempo médio para primeira resposta
+                    </p>
+                </li>
+            </ul>
+        </dv>
+    </section>
+
+    <section class="px-12 py-12">
+        <div class="mx-auto w-fit">
+            <h2 class="font-serif text-3xl text-navy mb-8">
+                Oque <span class="italic text-gold">abrange</span> esta área
+            </h2>
+
+            <div class="grid grid-cols-[repeat(3,minmax(0,602px))] gap-0.5">
+                {
+                    direitoTrabalhistaDados.map((d) => (
+                        <CardAreaAtuacao
+                            id={d.id}
+                            title={d.title}
+                            desc={d.desc}
+                        />
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Base>
