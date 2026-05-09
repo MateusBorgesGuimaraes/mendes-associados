@@ -1,0 +1,106 @@
+---
+import Base from "../layouts/Base.astro";
+import EmailFooter from "../icons/EmailFooter.svg";
+---
+
+<Base title="Contato">
+    <section class="grid grid-cols-2 min-h-[calc(100vh-72px)]">
+        <div
+            class="border-r border-border px-12 flex flex-col justify-center py-12"
+        >
+            <span class="dest">Fale conosco</span>
+            <h1 class="title2">
+                Vamos conversar <br /> sobre o seu <span class="italicGold"
+                    >caso</span
+                >.
+            </h1>
+            <div class="flex flex-col gap-8 mt-8">
+                <div class="flex gap-4 items-center">
+                    <div
+                        class="border border-text-muted p-3 flex items-center justify-center rounded-full"
+                    >
+                        <EmailFooter class="text-gold" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <p
+                            class="text-gold text-sm font-medium uppercase tracking-wider"
+                        >
+                            ENDEREÇO
+                        </p>
+                        <p class="text-sm text-navy">
+                            Av. Paulista, 1.000 — 12º andar
+                        </p>
+                        <p class="text-sm text-navy">
+                            Bela Vista, São Paulo — SP
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-center">
+                    <div
+                        class="border border-text-muted p-3 flex items-center justify-center rounded-full"
+                    >
+                        <EmailFooter class="text-gold" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <p
+                            class="text-gold text-sm font-medium uppercase tracking-wider"
+                        >
+                            TELEFONE
+                        </p>
+                        <p class="text-sm text-navy">(11) 3000-0000</p>
+                        <p class="text-sm text-navy">(11) 99999-0000</p>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 items-center">
+                    <div
+                        class="border border-text-muted p-3 flex items-center justify-center rounded-full"
+                    >
+                        <EmailFooter class="text-gold" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <p
+                            class="text-gold text-sm font-medium uppercase tracking-wider"
+                        >
+                            email
+                        </p>
+                        <p class="text-sm text-navy">
+                            contato@mendesadvogados.com.br
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- HORARIOS -->
+            <div class="mt-8 pt-6 pr-16 border-t border-border">
+                <p class="dest mb-6">Horários de atendimento</p>
+                <div class="flex flex-col gap-4">
+                    <div
+                        class="flex justify-between items-center border-b border-border/40"
+                    >
+                        <span class="text-navy">Segunda - Sexta</span><span
+                            class="text-text-muted">9h às 18h</span
+                        >
+                    </div>
+
+                    <div
+                        class="flex justify-between items-center border-b border-border/40"
+                    >
+                        <span class="text-navy">Sábado</span><span
+                            class="text-text-muted">9h às 13h</span
+                        >
+                    </div>
+
+                    <div
+                        class="flex justify-between items-center border-b border-border/40"
+                    >
+                        <span class="text-navy">Domingo</span><span
+                            class="text-text-muted">Fechado</span
+                        >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-cream-mid"></div>
+    </section>
+</Base>

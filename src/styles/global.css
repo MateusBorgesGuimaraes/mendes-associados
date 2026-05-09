@@ -37,11 +37,16 @@
         color: var(--color-text-subtle);
     }
 
-    .title {
+    .title,
+    .title2 {
         font-family: var(--font-serif);
         font-size: 4rem;
         color: var(--color-navy);
         line-height: 120%;
+    }
+
+    .title2 {
+        font-size: 3rem;
     }
 
     .italicGold {
