@@ -1,0 +1,19 @@
+---
+interface Props {
+    variant?: "nav" | "gold";
+    class?: string;
+}
+
+const { variant = "nav", class: className } = Astro.props;
+---
+
+<button
+    class={`inline-flex items-center justify-center px-6 py-3 uppercase cursor-pointer transition
+${
+    variant === "nav"
+        ? "bg-navy hover:bg-navy-mid text-white"
+        : "bg-gold-light hover:bg-gold text-navy"
+} ${className}`}
+>
+    <slot />
+</button>

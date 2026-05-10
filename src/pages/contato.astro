@@ -1,6 +1,10 @@
 ---
 import Base from "../layouts/Base.astro";
 import EmailFooter from "../icons/EmailFooter.svg";
+import CustomInput from "../components/form/CustomInput.astro";
+import CustomSelect from "../components/form/CustomSelect.astro";
+import CustomTextArea from "../components/form/CustomTextArea.astro";
+import CustomButton from "../components/form/CustomButton.astro";
 ---
 
 <Base title="Contato">
@@ -101,6 +105,51 @@ import EmailFooter from "../icons/EmailFooter.svg";
                 </div>
             </div>
         </div>
-        <div class="bg-cream-mid"></div>
+        <div class="bg-cream-mid flex items-center justify-center px-12">
+            <div class="max-w-183 w-full flex flex-col gap-4">
+                <h2 class="font-serif text-3xl text-navy mb-2">
+                    Envie sua <span class="italic text-gold">mensagem</span>
+                </h2>
+                <div class="flex gap-3">
+                    <CustomInput title="name" placeholder="seu nome completo" />
+                    <CustomInput
+                        title="TELEFONE"
+                        placeholder="(11) 00000-0000"
+                    />
+                </div>
+                <CustomInput title="email" placeholder="seuemail@gmail.com" />
+                <CustomSelect
+                    name="interesse"
+                    title="ÁREA DE INTERESSE"
+                    options={[
+                        {
+                            label: "Direito de Família",
+                            value: "Família",
+                        },
+                        {
+                            label: "Direito Civil",
+                            value: "Civil",
+                        },
+                        {
+                            label: "Direito Trabalhista",
+                            value: "Trabalhista",
+                        },
+                        {
+                            label: "Direito Empresarial",
+                            value: "Empresarial",
+                        },
+                        {
+                            label: "Direito Imobiliário",
+                            value: "Imobiliário",
+                        },
+                    ]}
+                />
+                <CustomTextArea
+                    title="Descreva seu caso"
+                    placeholder="Conte brevemente sua situação para que possamos orienta-lo melhor."
+                />
+                <CustomButton> ENVIAR MENSAGEM </CustomButton>
+            </div>
+        </div>
     </section>
 </Base>
