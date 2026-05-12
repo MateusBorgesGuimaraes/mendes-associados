@@ -1,0 +1,30 @@
+---
+interface Props {
+    href: string;
+    category: string;
+    title: string;
+    readingTime: string;
+    author: string;
+    date: string;
+}
+
+const { href, category, title, readingTime, author, date } = Astro.props;
+---
+
+<a
+    href={href}
+    class="bg-cream-mid p-6 border-t-2 border-transparent transition hover:border-t-gold"
+>
+    <p class="dest mb-4">{category}</p>
+    <div class="mb-3">
+        <p class="font-serif text-2xl text-navy">
+            {title}
+        </p>
+        <span class="text-sm text-gold">{readingTime}</span>
+    </div>
+    <div class="flex items-center gap-3">
+        <p class="text-base text-text-muted">{author}</p>
+        <span class="rounded-full bg-text-muted w-1 h-1"></span>
+        <p class="text-base text-text-muted">{date}</p>
+    </div>
+</a>

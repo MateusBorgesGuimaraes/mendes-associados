@@ -1,0 +1,21 @@
+---
+interface Props {
+    placeholder?: string;
+    type?: "text" | "email" | "password" | "tel" | "number";
+}
+
+import SearchIcon from "../../icons/SearchIcon.svg";
+
+const { type = "text", placeholder } = Astro.props;
+---
+
+<div
+    class="flex w-75 gap-4 items-center bg-cream-mid border border-border py-2 px-3"
+>
+    <div><SearchIcon /></div>
+    <input
+        class="placeholder:text-text-muted/40 w-full focus:outline-none"
+        placeholder={placeholder}
+        type={type}
+    />
+</div>
