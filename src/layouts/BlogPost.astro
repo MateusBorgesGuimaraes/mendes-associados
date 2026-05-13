@@ -1,0 +1,152 @@
+---
+import Base from "./Base.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import ButtonLink from "../components/ui/ButtonLink.astro";
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { title, author, date, category, excerpt, readTime } = post.data;
+
+const allPosts = await getCollection("blog");
+
+const related = allPosts
+    .filter((p) => p.data.category === category && p.id !== post.id)
+    .slice(0, 3);
+
+const dateFormatted = new Date(date).toLocaleDateString("pt-BR", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+});
+
+const initials =
+    author
+        .split(" ")
+        .filter((w) => !/^(dr|dra|sr|sra|prof)\.?$/i.test(w))
+        .map((w) => w[0])
+        .join("")
+        .slice(0, 2)
+        .toUpperCase() || author.slice(0, 2).toUpperCase();
+---
+
+<Base title={title} description={excerpt}>
+    <div class="bg-navy px-12 pt-16 pb-12">
+        <p class="text-[12px] tracking-widest text-subtle font-sans mb-5">
+            Blog
+            <span class="text-gold-light mx-2">/</span>
+            <span class="text-gold-light capitalize">{category}</span>
+        </p>
+
+        <p class="dest text-gold-light mb-4">
+            {category}
+        </p>
+
+        <h1 class="title2 text-text-light max-w-2xl">
+            {title}
+        </h1>
+
+        <div class="flex items-center gap-4 mt-6 flex-wrap">
+            <div
+                class="w-9 h-9 rounded-full bg-navy-mid flex items-center justify-center font-serif text-xs text-text-light"
+            >
+                {initials}
+            </div>
+            <span class="text-sm font-light text-text-light">{author}</span>
+            <div class="w-1 h-1 rounded-full bg-navy-mid"></div>
+            <span class="text-xs font-light text-subtle">{dateFormatted}</span>
+            <div class="w-1 h-1 rounded-full bg-navy-mid"></div>
+            <span class="text-xs font-light text-subtle"
+                >{readTime} de leitura</span
+            >
+        </div>
+    </div>
+
+    <div class="grid grid-cols-[1fr_280px] bg-cream">
+        <div class="px-12 py-12 border-r border-border">
+            <p
+                class="font-serif italic text-lg text-navy leading-relaxed
+                pb-7 mb-7 border-b border-border"
+            >
+                {excerpt}
+            </p>
+
+            <div
+                class="prose prose-sm max-w-none
+              [&_h2]:font-serif [&_h2]:font-normal [&_h2]:text-navy [&_h2]:text-xl [&_h2]:mt-8 [&_h2]:mb-3
+              [&_h3]:font-serif [&_h3]:font-normal [&_h3]:text-navy [&_h3]:text-lg [&_h3]:mt-6 [&_h3]:mb-2
+              [&_p]:font-light [&_p]:text-[#5A5650] [&_p]:leading-relaxed [&_p]:mb-4
+              [&_strong]:text-navy [&_strong]:font-medium
+              [&_a]:text-gold [&_a]:no-underline hover:[&_a]:underline
+              [&_blockquote]:border-l-2 [&_blockquote]:border-gold [&_blockquote]:font-serif
+              [&_blockquote]:italic [&_blockquote]:text-navy [&_blockquote]:pl-4"
+            >
+                <slot />
+            </div>
+        </div>
+
+        <aside class="px-8 py-10 bg-cream-mid flex flex-col gap-8">
+            <div class="pb-8 border-b border-border">
+                <p class="text-[9px] tracking-[0.2em] uppercase text-gold mb-4">
+                    Autor
+                </p>
+                <div class="flex items-center gap-3 mb-3">
+                    <div
+                        class="w-10 h-10 rounded-full bg-navy flex items-center justify-center
+                      font-serif text-sm text-text-light shrink-0"
+                    >
+                        {initials}
+                    </div>
+                    <div>
+                        <p class="font-serif text-navy text-sm">{author}</p>
+                        <p class="text-[11px] text-gold font-light">
+                            Mendes & Associados
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {
+                related.length > 0 && (
+                    <div class="pb-8 border-b border-border">
+                        <p class="text-[9px] tracking-[0.2em] uppercase text-gold mb-4">
+                            Artigos relacionados
+                        </p>
+                        <div class="flex flex-col gap-4">
+                            {related.map((p) => (
+                                <a href={`/blog/${p.id}`} class="group">
+                                    <p class="text-[9px] tracking-[0.15em] uppercase text-gold mb-1">
+                                        {p.data.category}
+                                    </p>
+                                    <p
+                                        class="font-serif text-[13px] text-navy leading-snug
+                          group-hover:text-gold transition-colors"
+                                    >
+                                        {p.data.title}
+                                    </p>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+
+            <div class="bg-navy p-5">
+                <p class="text-xs font-light text-subtle leading-relaxed mb-4">
+                    Tem dúvidas sobre este tema? Fale com um especialista.
+                </p>
+                <ButtonLink
+                    class="w-full"
+                    href="/contato"
+                    variant="gold"
+                    size="sm"
+                >
+                    Agendar consulta</ButtonLink
+                >
+            </div>
+        </aside>
+    </div>
+</Base>

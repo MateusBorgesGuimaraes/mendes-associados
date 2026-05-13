@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @import "@fontsource/playfair-display/400.css";
 @import "@fontsource/playfair-display/400-italic.css";
@@ -27,7 +28,7 @@
 @layer components {
     .dest,
     .dest2 {
-        font-size: var(--text-base);
+        font-size: var(--text-sm);
         color: var(--color-gold);
         text-transform: uppercase;
         letter-spacing: 10%;

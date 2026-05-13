@@ -2,10 +2,11 @@
 interface Props {
     href: string;
     variant?: "nav" | "gold";
+    size?: "md" | "sm";
     class?: string;
 }
 
-const { href, variant = "nav", class: className } = Astro.props;
+const { href, variant = "nav", class: className, size = "md" } = Astro.props;
 ---
 
 <a
@@ -15,7 +16,10 @@ ${
     variant === "nav"
         ? "bg-navy hover:bg-navy-mid text-white"
         : "bg-gold-light hover:bg-gold text-navy"
-} ${className}`}
+}
+${size === "md" ? "px-6 py-3 text-base" : "px-4 py-2 text-xs"}
+
+${className}`}
 >
     <slot />
 </a>
