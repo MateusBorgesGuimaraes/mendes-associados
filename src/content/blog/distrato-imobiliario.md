@@ -4,7 +4,7 @@ excerpt: "A Lei do Distrato estabelece regras claras sobre retenção de valores
 author: "Dr. Rafael Faria"
 date: 2023-12-18
 category: imobiliario
-featured: false
+featured: true
 readTime: "5 min"
 ---
 

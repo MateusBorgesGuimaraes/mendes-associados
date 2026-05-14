@@ -3,6 +3,8 @@ import Base from "./Base.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import ButtonLink from "../components/ui/ButtonLink.astro";
+import { formatInitial } from "../utils/format-initial";
+import { formatDate } from "../utils/format-date";
 
 interface Props {
     post: CollectionEntry<"blog">;
@@ -17,20 +19,8 @@ const related = allPosts
     .filter((p) => p.data.category === category && p.id !== post.id)
     .slice(0, 3);
 
-const dateFormatted = new Date(date).toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-});
-
-const initials =
-    author
-        .split(" ")
-        .filter((w) => !/^(dr|dra|sr|sra|prof)\.?$/i.test(w))
-        .map((w) => w[0])
-        .join("")
-        .slice(0, 2)
-        .toUpperCase() || author.slice(0, 2).toUpperCase();
+const dateFormatted = formatDate(date);
+const initials = formatInitial(author);
 ---
 
 <Base title={title} description={excerpt}>
