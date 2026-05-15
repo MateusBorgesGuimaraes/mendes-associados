@@ -5,6 +5,8 @@ import { formatDate } from "../../utils/format-date";
 import { formatInitial } from "../../utils/format-initial";
 import CardArticle from "../ui/CardArticle.tsx";
 import ButtonLink from "../ui/ButtonLink.tsx";
+import { Pagination } from "../ui/Pagination.tsx";
+const POSTS_PER_PAGE = 6;
 
 type Post = CollectionEntry<"blog">;
 
@@ -24,6 +26,17 @@ const CATEGORIES = [
 export default function PostFilters({ posts }: Props) {
   const [activeFilter, setActiveFilter] = useState("todos");
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  function handleFilter(value: string) {
+    setActiveFilter(value);
+    setCurrentPage(1);
+  }
+
+  function handleSearch(value: string) {
+    setSearch(value);
+    setCurrentPage(1);
+  }
 
   const featured = posts.filter((p) => p.data.featured === true).slice(0, 2);
 
@@ -35,6 +48,12 @@ export default function PostFilters({ posts }: Props) {
       .includes(search.toLocaleLowerCase());
     return matchCategory && matchSearch;
   });
+
+  const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+  const paginated = filtered.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE,
+  );
 
   return (
     <>
@@ -60,7 +79,7 @@ export default function PostFilters({ posts }: Props) {
             <input
               className="placeholder:text-text-muted/40 w-full focus:outline-none"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => handleSearch(e.target.value)}
               placeholder={"Buscar artigos..."}
               type={"text"}
             />
@@ -140,18 +159,23 @@ export default function PostFilters({ posts }: Props) {
             Oque <span className="italic text-gold">abrange</span> esta área
           </h2>
 
-          <div className="grid grid-cols-[repeat(3,minmax(0,602px))] gap-0.5">
-            {filtered.length > 0 ? (
-              filtered.map((a) => (
-                <CardArticle
-                  key={a.id}
-                  author={a.data.author}
-                  category={a.data.category}
-                  date={formatDate(a.data.date)}
-                  href={`/blog/${a.id}`}
-                  readingTime={a.data.readTime}
-                  title={a.data.title}
-                />
+          <div
+            id="posts-grid"
+            className="grid grid-cols-[repeat(3,minmax(0,602px))] gap-0.5"
+          >
+            {paginated.length > 0 ? (
+              paginated.map((a) => (
+                <>
+                  <CardArticle
+                    key={a.id}
+                    author={a.data.author}
+                    category={a.data.category}
+                    date={formatDate(a.data.date)}
+                    href={`/blog/${a.id}`}
+                    readingTime={a.data.readTime}
+                    title={a.data.title}
+                  />
+                </>
               ))
             ) : (
               <div className="flex flex-col py-12 gap-3">
@@ -174,6 +198,14 @@ export default function PostFilters({ posts }: Props) {
               </div>
             )}
           </div>
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              totalPosts={filtered.length}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </div>
     </>
