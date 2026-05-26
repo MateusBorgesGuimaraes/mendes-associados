@@ -4,6 +4,11 @@ import Header from "../components/Header.astro";
 import ButtonLink from "../components/ui/ButtonLink.astro";
 import Indicator from "../components/ui/Indicator.astro";
 import ListArrow from "../icons/ListArrow.svg";
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+
+const fourLast = allPosts.slice(0, 4);
 ---
 
 <Base title="Inicio" navVariant="home">
@@ -129,7 +134,61 @@ import ListArrow from "../icons/ListArrow.svg";
         </div>
     </section>
     <!-- RECENT ARTICLES SECTION -->
-    <!-- <div>fazer depois que a parte de blog estiver pronta</div> -->
+    <section class="bg-cream-mid">
+        <div class="py-12 px-12">
+            <h2 class="font-serif text-3xl text-navy self-start mb-8">
+                Artigos & <span class="italic text-gold">insights</span>
+            </h2>
+            <div class="grid grid-cols-[28fr_17fr_17fr_17fr_17fr] gap-0.5">
+                {
+                    fourLast &&
+                        fourLast.map((fl, i) =>
+                            i === 0 ? (
+                                <div class="bg-navy p-6 flex flex-col justify-between gap-8">
+                                    <span class="text-base text-text-subtle uppercase">
+                                        {fl.data.category}
+                                    </span>
+
+                                    <a
+                                        href={`/blog/${fl.id}`}
+                                        class="text-2xl font-serif text-white transition hover:text-gold-light"
+                                    >
+                                        {fl.data.title}
+                                    </a>
+
+                                    <span class="text-base text-text-subtle">
+                                        {fl.data.author} - {fl.data.readTime} de
+                                        leitura
+                                    </span>
+                                </div>
+                            ) : (
+                                <div class="bg-cream p-6 flex flex-col gap-8 justify-between">
+                                    <span class="text-base text-gold uppercase">
+                                        {fl.data.category}
+                                    </span>
+
+                                    <a
+                                        href={`/blog/${fl.id}`}
+                                        class="text-xl font-serif text-navy transition hover:text-gold"
+                                    >
+                                        {fl.data.title}
+                                    </a>
+
+                                    <span class="text-base text-text-muted">
+                                        {fl.data.author} - {fl.data.readTime} de
+                                        leitura
+                                    </span>
+                                </div>
+                            ),
+                        )
+                }
+
+                <div class="flex items-center justify-center">
+                    <Indicator>Todos os artigos</Indicator>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- CTA SECTION -->
     <section class="py-12 mx-auto justify-center flex items-center gap-100">
         <div class="flex flex-col gap-2">
