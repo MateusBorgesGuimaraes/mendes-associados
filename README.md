@@ -16,7 +16,6 @@ The project includes institutional pages, areas of practice, a legal articles se
 * **Featured articles** — highlight selected content on the website.
 * **Reading time** — display estimated reading time for articles.
 * **Typed content** — blog content is validated through Astro Content Collections and Zod schemas.
-* **Responsive design** — layouts adapted for different screen sizes.
 * **Reusable components** — shared components for navigation, forms, cards, buttons, pagination, and other interface elements.
 * **Content management** — Decap CMS integration for managing website content.
 * **Typography system** — DM Sans and Playfair Display used to create a professional editorial visual identity.
@@ -167,7 +166,6 @@ The visual identity was designed to communicate **trust, professionalism, and so
 * `DM Sans` for interface and body text
 * Structured layouts with generous spacing
 * Professional visual hierarchy
-* Responsive layouts
 * Reusable cards and navigation elements
 * Clear calls to action
 * Content-focused article presentation
@@ -225,7 +223,6 @@ The project demonstrates practical experience with:
 * React
 * TypeScript
 * Tailwind CSS
-* Responsive web design
 * Content Collections
 * Markdown-based content
 * Zod schemas
